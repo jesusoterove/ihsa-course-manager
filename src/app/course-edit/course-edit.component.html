@@ -1,0 +1,21 @@
+<h3>Course Entry Form</h3>
+
+<div class="ui form" [formGroup]="courseForm" [class.loading]="loading" [class.error]="submitted && courseForm.invalid">
+    <div class="field" [class.error]="submitted && courseForm.get('name').invalid">
+        <label>Course Name</label>
+        <input type="text" formControlName="name" />
+        <div class="ui basic red pointing prompt label transition visible" *ngIf="submitted && courseForm.get('name').invalid">Course name is required and must be alpabhet only</div>
+    </div>
+    <div class="field" [class.error]="submitted && courseForm.get('startDate').invalid">
+        <label>Start Date</label>
+        <input type="date" formControlName="startDate" />
+        <div class="ui basic red pointing prompt label transition visible" *ngIf="submitted && courseForm.get('startDate').invalid">Start date must be a valid date not before today</div>
+    </div>
+    <div class="field" [class.error]="submitted && courseForm.get('price').invalid">
+        <label>Price</label>
+        <input type="text" formControlName="price" />
+        <div class="ui basic red pointing prompt label transition visible" *ngIf="submitted && courseForm.get('price').invalid">Price must be possitive less than $25</div>
+    </div>
+    <button class="ui right floated button" (click)="update()" [class.disabled]="courseForm.pristine">{{submitAction}}</button>
+    <button class="ui right floated button" (click)="goBack()">Cancel</button>
+</div>

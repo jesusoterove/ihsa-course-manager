@@ -1,0 +1,31 @@
+<h3>Course List</h3>
+
+<table class="ui celled striped table">
+    <!--caption>Course Management System</caption-->
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Start Date</th>
+            <th>Price</th>
+            <th>Upload / Download</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let course of courses" app-course-detail [course]="course" (deleted)="courseDeleted($event)">
+        </tr>
+    </tbody>
+</table>
+<br/>
+
+<a (click)="showTotalPrice()">Click Here To Show Total Prices</a>&nbsp;&nbsp;<a [routerLink]="['new']">Click Here to Add a Course</a>
+
+<ng-template let-context let-modal="modal" #modalTemplate>
+    <div class="header">Course Total Prices</div>
+    <div class="content">
+        <p>The total price of all courses is: ${{context.totalPrice}}</p>
+    </div>
+    <div class="actions">
+        <button class="ui green button" (click)="modal.approve('')" autofocus>OK</button>
+    </div>
+</ng-template>

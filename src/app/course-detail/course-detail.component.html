@@ -1,0 +1,12 @@
+<td data-label="Name">{{course.name}}</td>
+<td data-label="Start Date">{{course.startDate | date:"MM/dd/yy"}}</td>
+<td data-label="Price">${{course.price}}</td>
+<td>
+  <input type="file" style="display: none" accept=".doc,.docx" (change)="onFileChange($event)" #file/>
+  <a *ngIf="course.doc; else uploadLink" [attr.href]="course.doc.blob | safeHref"
+    [download]="course.doc.filename">Click here to download</a>
+  <ng-template #uploadLink>
+    <a (click)="file.click()">Click here to upload</a>
+  </ng-template>
+</td>
+<td><a (click)="delete()">Delete</a>/<a [routerLink]="[course.id]">Edit</a></td>

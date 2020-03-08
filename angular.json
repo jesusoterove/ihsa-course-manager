@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ihsa-cours-manager",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,9 +28,11 @@
               "src/assets"
             ],
             "styles": [
+              "./semantic/dist/semantic.min.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -54,6 +57,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
